@@ -1,11 +1,18 @@
 import XCTest
+import SwiftUI
 @testable import PullableScrollView
 
 final class PullableScrollViewTests: XCTestCase {
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct
-        // results.
-        XCTAssertEqual(PullableScrollView().text, "Hello, World!")
+
+    func testUsage() {
+        XCTAssertNoThrow(PullableScrollView(tintColor: .red,
+                                            refreshCallback: { callback in
+            // Fetch some data and invoke `callBack` to hide the indicator
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+                callback()
+            }
+        }, content: {
+            Text("Scroll view content")
+        }))
     }
 }
