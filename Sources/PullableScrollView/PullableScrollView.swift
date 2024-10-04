@@ -18,7 +18,7 @@ public struct PullableScrollView<Content: View>: View {
     public typealias VoidCallback = () -> Void
     public typealias RefreshCallback = (@escaping VoidCallback) -> Void
     
-    private let tintColor: Color?
+    private let tintColor: Color!
     private let showsVerticalScrollIndicator: Bool
     private let content: Content
     private let refreshCallback: RefreshCallback
